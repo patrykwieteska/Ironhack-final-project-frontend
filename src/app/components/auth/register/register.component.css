@@ -1,0 +1,59 @@
+.register-form {
+    background-color: #C4C4C4;
+    top:60%;
+    left:50%;
+    position: absolute;
+    -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+    min-width: 500px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+    box-shadow: rgba(157, 157, 157, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 5px;
+
+}
+.register-form-element {
+    padding:0px;
+    margin:0px;
+    width:250px;
+    resize: none;
+}
+
+.register-message {
+    font-size: 14px;
+    text-align: center;
+    color: #192E66;
+}
+
+a::after {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #192E66;
+    font-weight: 800;
+}
+
+a:hover {
+    color: #46669E;
+}
+
+.register-part {
+    float:left;
+    margin: 10px;
+}
+
+
+.info {
+    resize: none;
+
+    height: 156px;
+  }
+
+  #register-btn {
+      float: right;
+  }

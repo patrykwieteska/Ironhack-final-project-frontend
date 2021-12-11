@@ -1,0 +1,23 @@
+
+
+<div class="login-form">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" autocomplete="off">
+        <h2>Login</h2>
+        <div>
+            <mat-form-field appearance="fill" class="login-form-element">
+                <mat-label>username</mat-label>
+                <input matInput formControlName="username" type="text" autocomplete="off">
+                <mat-error *ngIf="username.hasError('required')">Username is required</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" class="login-form-element">
+                <mat-label>password</mat-label>
+                <input matInput type="password" formControlName="password" autocomplete="off">
+                <mat-error *ngIf="password.hasError('required')">Username is required</mat-error>
+            </mat-form-field>
+        </div>
+        <span class="login-message"><p>If you don't have an account - <a routerLink="/register" routerLinkActive="active">register</a> now</p></span>
+        <button mat-raised-button color="primary" id="login-btn"  type="submit" [disabled]="loginForm.invalid">LOGIN</button>
+    </form>
+</div>
