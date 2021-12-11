@@ -1,7 +1,12 @@
 import { RegisterComponent } from './components/auth/register/register.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
+import { PredictionListComponent } from './components/predictions/prediction-list/prediction-list.component';
+import { MatchListComponent } from './components/matches/match-list/match-list.component';
+import { StandingsComponent } from './components/standings/standings/standings.component';
+
 import { HomeComponent } from './components/home/home.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -13,6 +18,18 @@ const routes: Routes = [
   },
   {
     path: 'register', component:RegisterComponent
+  },
+  {
+    path: 'standings', component:StandingsComponent
+  },
+  {
+    path: 'matches', component:MatchListComponent
+  },
+  {
+    path: 'predictions', component:PredictionListComponent
+  },
+  {
+    path: 'profile', component:UserProfileComponent
   }
 ];
 

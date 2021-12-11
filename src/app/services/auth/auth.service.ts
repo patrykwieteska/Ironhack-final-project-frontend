@@ -33,7 +33,6 @@ export class AuthService implements OnInit {
     },
       {
         headers
-        , responseType: 'text'
       })
   }
 

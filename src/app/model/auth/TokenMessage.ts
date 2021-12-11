@@ -1,0 +1,6 @@
+interface TokenInterface {
+
+    accessToken: string;
+
+
+}

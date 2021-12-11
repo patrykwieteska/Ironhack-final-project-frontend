@@ -18,7 +18,11 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthHeaderComponent } from './components/auth/auth-header/auth-header.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { MatchListComponent } from './components/matches/match-list/match-list.component';
+import { PredictionListComponent } from './components/predictions/prediction-list/prediction-list.component';
+import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
+import { StandingsComponent } from './components/standings/standings/standings.component'
 
 
 @NgModule({
@@ -32,7 +36,11 @@ import { HttpClientModule } from '@angular/common/http'
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AuthHeaderComponent
+    AuthHeaderComponent,
+    MatchListComponent,
+    PredictionListComponent,
+    UserProfileComponent,
+    StandingsComponent
   ],
   imports: [
     BrowserModule,

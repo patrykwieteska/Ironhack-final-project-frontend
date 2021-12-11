@@ -8,17 +8,17 @@
                         <span class="material-icons">home</span>
                     </div>
                   </a>
-              <a href="#">
+              <a routerLink="/matches" routerLinkActive="true">
                 <div class="nav-element">
                     Matches
                 </div>
               </a>
-              <a href="#">
+              <a routerLink="/standings">
                 <div class="nav-element">
                     Standings
                 </div>
               </a>
-              <a href="#">
+              <a routerLink="/predictions">
                 <div class="nav-element">
                     Predictions
                 </div>
@@ -30,12 +30,12 @@
                 <span class="material-icons">login</span>
             </div>
           </a>
-          <a>
+          <a (click)="logout()" routerLink="/login">
             <div class="nav-icon-element">
                 <span class="material-icons">logout</span>
             </div>
           </a>
-          <a href="#">
+          <a routerLink="/profile" title="Profil">
             <div class="nav-icon-element">
                 <span class="material-icons">account_circle</span>
             </div>

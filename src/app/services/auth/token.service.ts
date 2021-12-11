@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 
-const ACCESS_TOKEN = 'access-token'
+const ACCESS_TOKEN = 'accessToken'
 
 @Injectable({
   providedIn: 'root'
