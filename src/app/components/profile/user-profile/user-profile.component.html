@@ -1,1 +1,82 @@
-<p>user-profile works!</p>
+<div *ngIf="!pageLoaded" class="loading-circle">
+
+
+    <div class="spinner-border" style="width: 100px; height: 100px; margin-top:100px; color: #192E66;" role="status">
+
+
+
+    </div>
+
+
+</div>
+
+<div *ngIf="pageLoaded" class="profile-main">
+    <div class="profile-panel shadow-effect">
+        <div>
+            <div class="profile-element circle-element"><span
+                    class="material-icons material-icons-profile">person</span></div>
+            <div class="profile-element">
+                <h1>{{profile.username}}</h1>
+            </div>
+            <div class="profile-element" style="width: max-content;">
+                <a matTooltip="Edit profile">  </a>
+              
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="profile-element">
+            <h2>User info:</h2>
+            <ul>
+                <li>
+                    <span class="list-header">Email: </span> <span class="list-element">{{profile.email}}</span>
+                </li>
+                <li>
+                    <span class="list-header">Favourite team: </span><span class="list-element" matTooltip="{{team.name}}" [matTooltipPosition]="tooltipPosition"><img [src]="team.logo" width="22px;"></span>
+                </li>
+                <li>
+                    <span class="list-header">Country: </span> <span class="list-element">{{profile.country}}</span>
+                </li>
+                <li>
+                    <span class="list-header">City: </span> <span class="list-element">{{profile.city}}</span>
+                </li>
+                <li>
+                    <span class="list-header">About you: </span> <span class="list-element info-element">{{profile.info}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="profile-buttons">
+            <div class="profile-button"><button mat-raised-button color="warn"><span class="material-icons">
+                delete_forever
+            </span> Delete</button></div>
+            <div class="profile-button"><button mat-raised-button><span class="material-icons">
+                edit
+            </span> Edit</button></div>
+        
+            <div style="clear:both;"></div>
+        </div>
+        
+    </div>
+    <div class="profile-panel shadow-effect">
+        <div class="profile-element">
+            <h1>Predictions history</h1>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="profile-element">
+            <ul>
+                <li>
+                    <span class="list-header">Total points:</span> {{predictionHistory.totalPoints}}
+                </li>
+                <li>
+                    <span class="list-header">Total predictions: </span> {{predictionHistory.totalPredictions}}
+                </li>
+                <li>
+                    <span class="list-header">Exact scores: </span> {{predictionHistory.exactPredictions}}
+                </li>
+                <li>
+                    <span class="list-header">Correct results: </span> {{predictionHistory.correctPredictions}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>

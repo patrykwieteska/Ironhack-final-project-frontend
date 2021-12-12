@@ -6,12 +6,13 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select'
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/common/header/header.component';
 import { NavbarComponent } from './components/common/navbar/navbar.component';
-import { ContentComponent } from './components/common/content/content.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { HeaderLogoComponent } from './components/common/header-logo/header-logo.component';
 import { HomeComponent } from './components/home/home.component';
@@ -30,7 +31,6 @@ import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
     AppComponent,
     HeaderComponent,
     NavbarComponent,
-    ContentComponent,
     FooterComponent,
     HeaderLogoComponent,
     HomeComponent,
@@ -54,6 +54,8 @@ import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
     MatButtonModule,
     MatSelectModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
     JwtModule
   ],
   providers: [{
