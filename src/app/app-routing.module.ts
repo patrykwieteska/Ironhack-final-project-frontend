@@ -1,3 +1,4 @@
+
 import { RegisterComponent } from './components/auth/register/register.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
@@ -8,6 +9,7 @@ import { StandingsComponent } from './components/standings/standings/standings.c
 import { HomeComponent } from './components/home/home.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService as AuthGuard } from './services/auth/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -26,10 +28,10 @@ const routes: Routes = [
     path: 'matches', component:MatchListComponent
   },
   {
-    path: 'predictions', component:PredictionListComponent
+    path: 'predictions', component:PredictionListComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'profile', component:UserProfileComponent
+    path: 'profile', component:UserProfileComponent, canActivate: [AuthGuard]
   }
 ];
 

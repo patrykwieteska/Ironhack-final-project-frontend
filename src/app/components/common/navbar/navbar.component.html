@@ -18,24 +18,24 @@
                     Standings
                 </div>
               </a>
-              <a routerLink="/predictions">
+              <a routerLink="/predictions" *ngIf="isAuthenticated">
                 <div class="nav-element">
                     Predictions
                 </div>
               </a>
             </div>
           </div>
-          <a routerLink="/login" routerLinkActive="active">
+          <a routerLink="/login" routerLinkActive="active" *ngIf="!isAuthenticated" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on top">
             <div class="nav-icon-element">
                 <span class="material-icons">login</span>
             </div>
           </a>
-          <a (click)="logout()" routerLink="/login">
+          <a (click)="logout()" routerLink="/login" *ngIf="isAuthenticated">
             <div class="nav-icon-element">
                 <span class="material-icons">logout</span>
             </div>
           </a>
-          <a routerLink="/profile" title="Profil">
+          <a routerLink="/profile" title="Profil" *ngIf="isAuthenticated">
             <div class="nav-icon-element">
                 <span class="material-icons">account_circle</span>
             </div>

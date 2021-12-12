@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { TokenService } from './../../../services/auth/token.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private tokenService: TokenService, private router: Router) { }
+  isAuthenticated:boolean = this.auth.isAuthenticated();
+
+  constructor(private tokenService: TokenService, private router: Router, private auth: AuthService) { 
+  }
 
   ngOnInit(): void {
   }
@@ -19,6 +23,6 @@ export class NavbarComponent implements OnInit {
     this.tokenService.logout();
     console.log('logout')
     console.log('token ',this.tokenService.getToken())
+    window.location.reload();
   }
-
 }

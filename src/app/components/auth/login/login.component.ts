@@ -30,6 +30,9 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+    }
   }
 
 
@@ -50,15 +53,15 @@ export class LoginComponent implements OnInit {
         this.tokenService.saveToken(result.accessToken);
         this.isLoggedIn=true;
         console.log('token ',this.tokenService.getToken())
-        
-        this.goToLoginPage();
+        window.location.reload();
+        this.goToHomePage();
 
       }
     )
   }
 
 
-  goToLoginPage(): void {
+  goToHomePage(): void {
     this.router.navigate(['/']);
   }
 }
