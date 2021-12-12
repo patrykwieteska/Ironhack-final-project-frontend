@@ -1,14 +1,12 @@
+import { TokenService } from './token.service';
 import { RegisterForm } from './../../model/auth/RegisterForm';
 import { Injectable, OnInit } from '@angular/core';
-import { PredicMatchApi } from '../api-list';
+import { PredictMatchApi } from '../api-list';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  responseType: 'text'};
-  
-const baseUrl = PredicMatchApi.BASE_URL;
+const baseUrl = PredictMatchApi.BASE_URL;
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +15,7 @@ export class AuthService implements OnInit {
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService, private tokenService: TokenService) { }
 
 
   ngOnInit(): void {
@@ -33,7 +31,6 @@ export class AuthService implements OnInit {
     },
       {
         headers
-        , responseType: 'text'
       })
   }
 
@@ -57,7 +54,17 @@ export class AuthService implements OnInit {
       responseType: 'text'
     });
 
+  }
 
+  public isAuthenticated() : boolean {
+    let token : string | null = this.tokenService.getToken();
+
+    if(token!=null) {
+      return !this.jwtHelper.isTokenExpired(token);
+    }
+
+    return false;
+    
   }
 }
 

@@ -5,6 +5,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select'
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,9 +18,12 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthHeaderComponent } from './components/auth/auth-header/auth-header.component';
-import { HttpClientModule } from '@angular/common/http'
-
+import { HttpClientModule } from '@angular/common/http';
+import { MatchListComponent } from './components/matches/match-list/match-list.component';
+import { PredictionListComponent } from './components/predictions/prediction-list/prediction-list.component';
+import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
+import { StandingsComponent } from './components/standings/standings/standings.component'
+import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { HttpClientModule } from '@angular/common/http'
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AuthHeaderComponent
+    MatchListComponent,
+    PredictionListComponent,
+    UserProfileComponent,
+    StandingsComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -44,9 +52,14 @@ import { HttpClientModule } from '@angular/common/http'
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTooltipModule,
+    JwtModule
   ],
-  providers: [],
+  providers: [{
+    provide: JWT_OPTIONS, useValue: JWT_OPTIONS
+  }, JwtHelperService
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

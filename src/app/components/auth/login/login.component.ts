@@ -3,6 +3,7 @@ import { LoginForm } from './../../../model/auth/LoginForm';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,13 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  isLoggedIn = false;
+  loginError: boolean = false;
 
   loginForm: FormGroup;
   username: FormControl;
   password: FormControl;
 
-  constructor(private authService: AuthService, private tokenService: TokenService) {
+  constructor(private authService: AuthService, private tokenService: TokenService, private router:Router) {
     this.username= new FormControl('',[Validators.required]) 
     this.password= new FormControl('',[Validators.required]) 
 
@@ -29,32 +30,32 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+    }
   }
 
 
   onSubmit(): void {
-    console.log('Login form');
-    console.log(this.loginForm.value.username);
-    console.log(this.loginForm.value.password);
-
     let loginPost: LoginForm = new LoginForm(
       this.loginForm.value.username,
       this.loginForm.value.password
     );
 
-
     this.authService.login(loginPost).subscribe(
-      (data) => {
-        this.tokenService.saveToken(data.accessToken);
-        console.log(data.accessToken)
-        this.isLoggedIn
+      result=> {
+        this.tokenService.saveToken(result.accessToken);
+        this.tokenService.saveUser(this.loginForm.value.username);
+        this.reloadPage();
+
+      },
+      error => {
+        this.loginError=true;
       }
     )
-  }
+    }
 
-
-
-  refreshPage():void {
+  reloadPage(): void {
     window.location.reload();
   }
 }
