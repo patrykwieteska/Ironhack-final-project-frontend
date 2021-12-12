@@ -1,3 +1,5 @@
+import { TeamService } from './../../../services/team/team.service';
+import { Team } from './../../../model/app-models/Team';
 import { RegisterForm } from './../../../model/auth/RegisterForm';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +18,7 @@ export class RegisterComponent implements OnInit {
   usernameAlreadyExists: boolean;
   emailAlreadyExists: boolean;
 
-  teams: any[];
+  teams: Team[] | undefined;
 
   registerForm:FormGroup;
   username:FormControl;
@@ -28,31 +30,8 @@ export class RegisterComponent implements OnInit {
   email:FormControl;
   info:FormControl;
 
-  constructor(private authService: AuthService, private router: Router) {
-
-    this.teams = [ 
-      {
-        name:'None',
-        id:0
-      },
-    {
-      name:'Legia Warsaw',
-      id:1
-    },
-    {
-      name:'Lech Poznan',
-      id:2
-    },
-    {
-      name:'Wisla Cracow',
-      id:3
-    },
-    {
-      name:'Pogon Szczecin',
-      id:4
-    },
-
-    ]
+  constructor(private authService: AuthService, private router: Router, private teamService: TeamService) {
+    this.getTeams();
 
 
     this.username = new FormControl('',[Validators.required, Validators.nullValidator,Validators.minLength(5),Validators.maxLength(30),AppValidator.nameValidator]);
@@ -114,6 +93,14 @@ export class RegisterComponent implements OnInit {
 
   goToLoginPage(): void {
     this.router.navigate(['/login']);
+  }
+
+  getTeams(): void {
+    this.teamService.getTeamsList().subscribe(
+      result => {
+        this.teams = result;
+      }
+    )
   }
 
 }

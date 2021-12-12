@@ -3,43 +3,46 @@
         <div class="container-fluid">
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a routerLink="/" routerLinkActive="active">
+                <a routerLink="/" routerLinkActive="active" matTooltip="Home page">
                     <div class="nav-icon-element">
                         <span class="material-icons">home</span>
                     </div>
                   </a>
-              <a routerLink="/matches" routerLinkActive="true">
+              <a routerLink="/matches" routerLinkActive="true" matTooltip="Matches">
                 <div class="nav-element">
                     Matches
                 </div>
               </a>
-              <a routerLink="/standings">
+              <a routerLink="/standings" matTooltip="Standings">
                 <div class="nav-element">
                     Standings
                 </div>
               </a>
-              <a routerLink="/predictions" *ngIf="isAuthenticated">
+              <a routerLink="/predictions" *ngIf="isAuthenticated" matTooltip="Predictions">
                 <div class="nav-element">
                     Predictions
                 </div>
               </a>
             </div>
           </div>
-          <a routerLink="/login" routerLinkActive="active" *ngIf="!isAuthenticated" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on top">
+          <a routerLink="/login" routerLinkActive="active" *ngIf="!isAuthenticated" matTooltip="Login">
             <div class="nav-icon-element">
                 <span class="material-icons">login</span>
             </div>
           </a>
-          <a (click)="logout()" routerLink="/login" *ngIf="isAuthenticated">
+          <a (click)="logout()" routerLink="/login" *ngIf="isAuthenticated" matTooltip="Logout">
             <div class="nav-icon-element">
                 <span class="material-icons">logout</span>
             </div>
           </a>
-          <a routerLink="/profile" title="Profil" *ngIf="isAuthenticated">
+          <a style="text-decoration: none;" routerLink="/profile" title="Profil" *ngIf="isAuthenticated"  matTooltip="User profile">
             <div class="nav-icon-element">
                 <span class="material-icons">account_circle</span>
             </div>
           </a>
+          <a 
+       >
+        </a>
         </div>
       </nav>
      

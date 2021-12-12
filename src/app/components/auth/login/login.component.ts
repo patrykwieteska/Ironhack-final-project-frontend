@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  isLoggedIn = false;
+  loginError: boolean = false;
 
   loginForm: FormGroup;
   username: FormControl;
@@ -37,31 +37,25 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit(): void {
-    console.log('Login form');
-    console.log(this.loginForm.value.username);
-    console.log(this.loginForm.value.password);
-
     let loginPost: LoginForm = new LoginForm(
       this.loginForm.value.username,
       this.loginForm.value.password
     );
 
-
     this.authService.login(loginPost).subscribe(
-
       result=> {
         this.tokenService.saveToken(result.accessToken);
-        this.isLoggedIn=true;
-        console.log('token ',this.tokenService.getToken())
-        window.location.reload();
-        this.goToHomePage();
+        this.tokenService.saveUser(this.loginForm.value.username);
+        this.reloadPage();
 
+      },
+      error => {
+        this.loginError=true;
       }
     )
-  }
+    }
 
-
-  goToHomePage(): void {
-    this.router.navigate(['/']);
+  reloadPage(): void {
+    window.location.reload();
   }
 }

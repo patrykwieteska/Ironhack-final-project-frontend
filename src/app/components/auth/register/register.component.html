@@ -61,8 +61,11 @@
             <mat-form-field appearance="fill" class="register-form-element">
                 <mat-label>Favorite team</mat-label>
                 <mat-select formControlName="fovoriteTeam">
+                    <mat-option [value]=0>
+                        None
+                    </mat-option>
                     <mat-option *ngFor="let team of teams" [value]="team.id">
-                        {{team.name}}
+                        <img [src]="team.logo" width="20px">  {{team.name}}
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="fovoriteTeam.hasError('required')">Choose some team or None</mat-error>

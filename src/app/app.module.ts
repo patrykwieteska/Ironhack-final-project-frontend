@@ -7,7 +7,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select'
 import {MatTooltipModule} from '@angular/material/tooltip';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/common/header/header.component';
@@ -19,7 +18,6 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthHeaderComponent } from './components/auth/auth-header/auth-header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatchListComponent } from './components/matches/match-list/match-list.component';
 import { PredictionListComponent } from './components/predictions/prediction-list/prediction-list.component';
@@ -38,7 +36,6 @@ import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AuthHeaderComponent,
     MatchListComponent,
     PredictionListComponent,
     UserProfileComponent,
