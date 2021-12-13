@@ -57,13 +57,6 @@ h1 {
 h2 {
     font-weight: 600;
 }
-
-.loading-circle {
-    margin:auto;
-    margin: 0;
-    text-align: center;;
-}
-
 .profile-button {
     float:right;
 
@@ -73,7 +66,9 @@ h2 {
     width: 500px;
     clear:both;
     float:left;
-    margin:auto;
-    text-align: center;
+}
+
+.info-element {
+    height: 350px;
 
 }

@@ -25,6 +25,8 @@ import { PredictionListComponent } from './components/predictions/prediction-lis
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
 import { StandingsComponent } from './components/standings/standings/standings.component'
 import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
+import { LoaderComponent } from './components/common/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
     MatchListComponent,
     PredictionListComponent,
     UserProfileComponent,
-    StandingsComponent
+    StandingsComponent,
+    EditProfileComponent,
+    LoaderComponent
     
   ],
   imports: [
