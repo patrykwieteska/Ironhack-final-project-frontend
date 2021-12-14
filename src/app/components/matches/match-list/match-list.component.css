@@ -1,0 +1,25 @@
+.main {
+    margin: auto;
+    width: 1200px;
+    height:650px;
+    background-color: #C4C4C4;
+    border-radius: 10px 10px 10px 10px;
+
+}
+
+.matches-header-1 {
+    text-align: center;
+    font-weight: 600;
+}
+
+.matches-header-2 {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+.content {
+
+    margin-left: 100px;
+    padding:10px;
+    width: 1000px;
+}

@@ -31,7 +31,17 @@ const routes: Routes = [
   },
   {
     path: 'profile', component:UserProfileComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'matches/round/:roundId', component:MatchListComponent
   }
+  // ,{
+
+  //   path: '**',
+  //   component: PageNotFoundComponent,
+  //  }
+
+
 ];
 
 @NgModule({
