@@ -19,9 +19,10 @@ export class NavbarComponent implements OnInit {
   }
 
 
+
+
+
   logout():void {
-    this.router.navigate(['/']);
-    this.tokenService.logout();
-    window.location.reload();
+    this.auth.logout();
   }
 }

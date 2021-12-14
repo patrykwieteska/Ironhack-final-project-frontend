@@ -34,11 +34,11 @@ export class RegisterComponent implements OnInit {
     this.getTeams();
 
 
-    this.username = new FormControl('',[Validators.required, Validators.nullValidator,Validators.minLength(5),Validators.maxLength(30),AppValidator.nameValidator]);
+    this.username = new FormControl('',[Validators.required, Validators.nullValidator,Validators.minLength(4),Validators.maxLength(30)]);
     this.password = new FormControl('',[Validators.required, Validators.minLength(8),Validators.maxLength(30)]);
     this.passwordConfirmation = new FormControl('',[Validators.required, Validators.minLength(8),Validators.maxLength(30), AppValidator.passwordValidator]);
-    this.country = new FormControl('',[Validators.minLength(3),Validators.maxLength(30)]);
-    this.city = new FormControl('',[Validators.minLength(3),Validators.maxLength(30)]);
+    this.country = new FormControl('',[Validators.minLength(3),Validators.maxLength(30),AppValidator.nameValidator]);
+    this.city = new FormControl('',[Validators.minLength(3),Validators.maxLength(30),AppValidator.nameValidator]);
     this.fovoriteTeam = new FormControl('',[Validators.required]);
     this.email = new FormControl('',[Validators.required,Validators.email]);
     this.info = new FormControl('',[Validators.maxLength(200)]);

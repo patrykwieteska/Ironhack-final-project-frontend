@@ -1,9 +1,11 @@
 import { TokenService } from './token.service';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
 
 const AUTHORIZATION_HEADER = 'Authorization';
 
+@Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
     constructor(private accessToken: TokenService) {}

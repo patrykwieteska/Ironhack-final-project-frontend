@@ -1,4 +1,3 @@
-
 import { RegisterComponent } from './components/auth/register/register.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';

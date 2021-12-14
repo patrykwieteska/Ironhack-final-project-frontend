@@ -1,0 +1,13 @@
+<h1 mat-dialog-title style="text-align: center; font-weight: 500;">{{data}}, are Yoy sure?</h1>
+<div mat-dialog-content>
+</div>
+<p style="text-align: center;">We will delete every information about your account including personal data and match predictions</p>
+
+<div mat-dialog-actions>
+
+
+    <div class="buttons-group">
+        <button mat-raised-button (click)="cancel()" class="button-dialog">CANCEL</button>
+        <button mat-raised-button color="warn" (click)="deleteAnyway()" class="button-dialog">DELETE ANYWAY</button>
+    </div>
+</div>
