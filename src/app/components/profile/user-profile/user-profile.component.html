@@ -1,50 +1,133 @@
 <app-loader *ngIf="!pageLoaded"></app-loader>
 <div *ngIf="pageLoaded" class="profile-main">
-    <div class="profile-panel shadow-effect">
-        <div>
-            <div class="profile-element circle-element"><span
-                    class="material-icons material-icons-profile">person</span></div>
-            <div class="profile-element">
-                <h1>{{profile.username}}</h1>
+    <form (ngSubmit)="saveProfile()" [formGroup]="editForm">
+        <div class="profile-panel shadow-effect">
+            <div>
+                <div class="profile-element circle-element"><span
+                        class="material-icons material-icons-profile">person</span></div>
+                <div class="profile-element">
+                    <h1>{{profile.username}}</h1>
+                </div>
+                <div class="profile-element" style="width: max-content;" id="edit-btn">
+                    <span matTooltip="Edit profile" *ngIf="!isEditMode" (click)="enableEditMode()"
+                        class="material-icons" id="edit-btn">
+                        mode_edit
+                    </span>
+                    <span matTooltip="Cancel" *ngIf="isEditMode" (click)="disableEditMode()" class="material-icons"
+                        id="edit-btn">
+                        close
+                    </span>
+                </div>
+                <div style="clear:both;"></div>
             </div>
-            <div class="profile-element" style="width: max-content;">
-                <a matTooltip="Edit profile">  </a>
-              
+            <div class="profile-element  info-element">
+                <h2>User info:</h2>
+                <ul>
+                    <li>
+                        <div *ngIf="!isEditMode">
+                            <span class="list-header">Email: </span> <span class="list-element">{{profile.email}}</span>
+                        </div>
+
+                        <div *ngIf="isEditMode">
+                            <mat-form-field class="edit-form-element">
+                                <input matInput type="email" ngDefaultControl [(ngModel)]="profile.email"
+                                    formControlName="email" autocomplete="off">
+                                <mat-error *ngIf="email.hasError('required')">Email is required</mat-error>
+                            </mat-form-field>
+                            <span class="list-edit"> Email</span>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div *ngIf="!isEditMode">
+                            <span class="list-header">Favourite team: </span><span class="list-element"
+                                matTooltip="{{profile.team.name}}"
+                                [matTooltipPosition]="tooltipPosition">{{profile.team.name}} <img
+                                    [src]="profile.team.logo" width="25px;"></span>
+                        </div>
+                        <div *ngIf="isEditMode">
+                        <mat-form-field class="edit-form-element">
+                            <mat-select formControlName="favoriteTeam" ngDefaultControl [(ngModel)]="profile.team.id">
+                                <mat-option [value]=0>
+                                    None
+                                </mat-option>
+                                <mat-option *ngFor="let team of teams" [value]="team.id">
+                                    <img [src]="team.logo" width="20px"> {{team.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                            <span class="list-edit"> Favourite team </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div *ngIf="!isEditMode">
+                            <span class="list-header">Country: </span> <span
+                                class="list-element">{{profile.country}}</span>
+                        </div>
+                        <div *ngIf="isEditMode">
+
+                            <mat-form-field class="edit-form-element">
+                                <input matInput type="text" formControlName="country" autocomplete="off"
+                                    ngDefaultControl [(ngModel)]="profile.country">
+                                <mat-error *ngIf="country.hasError('minlength')">Username must have minimum 3 characters
+                                </mat-error>
+                                <mat-error *ngIf="country.hasError('invalidName')">Username cannot contains numbers
+                                </mat-error>
+                            </mat-form-field>
+                            <span class="list-edit"> Country</span>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div *ngIf="!isEditMode">
+                            <span class="list-header">City: </span> <span class="list-element">{{profile.city}}</span>
+                        </div>
+                        <div *ngIf="isEditMode">
+
+                            <mat-form-field class="edit-form-element">
+                                <input matInput type="text" formControlName="city" autocomplete="off" ngDefaultControl
+                                    [(ngModel)]="profile.city">
+                                <mat-error *ngIf="city.hasError('minlength')">Username must have minimum 3 characters
+                                </mat-error>
+                                <mat-error *ngIf="city.hasError('invalidName')">Username cannot contains numbers
+                                </mat-error>
+                            </mat-form-field>
+                            <span class="list-edit"> City</span>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div *ngIf="!isEditMode">
+                            <span class="list-header">About you: </span> 
+                            <div
+                                class="list-element-info">{{profile.info}}</div>
+                        </div>
+                        <div *ngIf="isEditMode">
+                            <mat-form-field class="edit-form-info">
+                                <textarea matInput maxlength="200" class="info" formControlName="info" ngDefaultControl
+                                    [(ngModel)]="profile.info" autocomplete="off"></textarea>
+                            </mat-form-field>
+                            <span class="list-edit"> About you</span>
+                        </div>
+
+                    </li>
+                </ul>
             </div>
-            <div style="clear:both;"></div>
+            <div class="profile-buttons" *ngIf="isEditMode">
+                <div class="profile-button"><button matTooltip="Delete profile" (click)="openDialog()" mat-raised-button
+                        color="warn"><span class="material-icons">
+                            highlight_off
+                        </span></button></div>
+                <div class="profile-button"><button (click)="saveProfile()" mat-raised-button type="submit"
+                        [disabled]="editForm.invalid" matTooltip="Save profile"><span class="material-icons">
+                            save
+                        </span></button></div>
+
+                <div style="clear:both;"></div>
+            </div>
+
         </div>
-        <div class="profile-element  info-element">
-            <h2>User info:</h2>
-            <ul>
-                <li>
-                    <span class="list-header">Email: </span> <span class="list-element">{{profile.email}}</span>
-                </li>
-                <li>
-                    <span class="list-header">Favourite team: </span><span class="list-element" matTooltip="{{team.name}}" [matTooltipPosition]="tooltipPosition"><img [src]="team.logo" width="22px;"></span>
-                </li>
-                <li>
-                    <span class="list-header">Country: </span> <span class="list-element">{{profile.country}}</span>
-                </li>
-                <li>
-                    <span class="list-header">City: </span> <span class="list-element">{{profile.city}}</span>
-                </li>
-                <li>
-                    <span class="list-header">About you: </span> <span class="list-element">{{profile.info}}</span>
-                </li>
-            </ul>
-        </div>
-        <div class="profile-buttons">
-            <div class="profile-button"><button  mat-raised-button color="warn"><span class="material-icons">
-                delete_forever
-            </span> Delete</button></div>
-            <div class="profile-button"><button routerLink="/edit-profile" mat-raised-button><span class="material-icons">
-                edit
-            </span> Edit</button></div>
-        
-            <div style="clear:both;"></div>
-        </div>
-        
-    </div>
+    </form>
     <div class="profile-panel shadow-effect">
         <div class="profile-element">
             <h1>Predictions history</h1>
@@ -53,16 +136,16 @@
         <div class="profile-element">
             <ul>
                 <li>
-                    <span class="list-header">Total points:</span> {{predictionHistory.totalPoints}}
+                    <span class="list-header">Total points:</span> {{profile.predictionHistory.totalPoints}}
                 </li>
                 <li>
-                    <span class="list-header">Total predictions: </span> {{predictionHistory.totalPredictions}}
+                    <span class="list-header">Total predictions: </span> {{profile.predictionHistory.totalPredictions}}
                 </li>
                 <li>
-                    <span class="list-header">Exact scores: </span> {{predictionHistory.exactPredictions}}
+                    <span class="list-header">Exact scores: </span> {{profile.predictionHistory.exactPredictions}}
                 </li>
                 <li>
-                    <span class="list-header">Correct results: </span> {{predictionHistory.correctPredictions}}
+                    <span class="list-header">Correct results: </span> {{profile.predictionHistory.correctPredictions}}
                 </li>
             </ul>
         </div>

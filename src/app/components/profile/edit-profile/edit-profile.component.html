@@ -1,1 +1,75 @@
-<p>edit-profile works!</p>
+<app-loader *ngIf="!pageLoaded"></app-loader>
+<div *ngIf="pageLoaded" class="profile-main">
+    <form (ngSubmit)="saveProfile()" [formGroup]="editForm">
+    <div class="profile-panel shadow-effect">
+        <div>
+            <div class="profile-element circle-element"><span
+                    class="material-icons material-icons-profile">person</span></div>
+            <div class="profile-element">
+                <h1>
+                    <input type="text" class="form-control" placeholder="username" aria-label="Small" value="wietek" aria-describedby="inputGroup-sizing-sm">
+                  </h1>
+            </div>
+            <div class="profile-element" style="width: max-content;">
+                <a matTooltip="Edit profile">  </a>
+              
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="profile-element  info-element">
+            <h2>User info:</h2>
+            <ul>
+                <li>
+                        <input type="text" class="form-control edit-input" placeholder="Email" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </li>
+                <li>
+                        <input type="text" class="form-control edit-input" placeholder="Favourite team" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </li>
+                <li>
+                        <input type="text" class="form-control edit-input" placeholder="Country" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </li>
+                <li>
+                        <input type="text" class="form-control edit-input" placeholder="City" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </li>
+                <li>
+                        <textarea type="textarea" class="form-control" placeholder="About you" aria-label="Small" aria-describedby="inputGroup-sizing-sm"></textarea>
+                </li>
+            </ul>
+        </div>
+        <div class="profile-buttons">
+            <div class="profile-button"><button  mat-raised-button color="warn"><span class="material-icons">
+                delete_forever
+            </span> Delete</button></div>
+            <div class="profile-button"><button routerLink="/edit-profile" mat-raised-button><span class="material-icons">
+                check
+            </span> SAVE</button></div>
+        
+            <div style="clear:both;"></div>
+        </div>
+        
+    </div>
+</form>
+    <div class="profile-panel shadow-effect">
+        <div class="profile-element">
+            <h1>Predictions history</h1>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="profile-element">
+            <ul>
+                <li>
+                    <span class="list-header">Total points:</span> predictionHistory.totalPoints
+                </li>
+                <li>
+                    <span class="list-header">Total predictions: </span> predictionHistory.totalPredictions
+                </li>
+                <li>
+                    <span class="list-header">Exact scores: </span> predictionHistory.exactPredictions
+                </li>
+                <li>
+                    <span class="list-header">Correct results: </span> predictionHistory.correctPredictions
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>

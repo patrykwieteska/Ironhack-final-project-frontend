@@ -1,3 +1,4 @@
+import { authInterceptorProviders } from './services/auth/AuthInterceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -8,6 +9,7 @@ import {MatSelectModule} from '@angular/material/select'
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +29,7 @@ import { StandingsComponent } from './components/standings/standings/standings.c
 import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
 import { LoaderComponent } from './components/common/loader/loader.component';
+import { DeleteProfileComponent } from './components/profile/delete-profile/delete-profile.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,8 @@ import { LoaderComponent } from './components/common/loader/loader.component';
     UserProfileComponent,
     StandingsComponent,
     EditProfileComponent,
-    LoaderComponent
+    LoaderComponent,
+    DeleteProfileComponent
     
   ],
   imports: [
@@ -60,11 +64,13 @@ import { LoaderComponent } from './components/common/loader/loader.component';
     MatTooltipModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
+    MatDialogModule,
     JwtModule
+    ,FormsModule
   ],
   providers: [{
     provide: JWT_OPTIONS, useValue: JWT_OPTIONS
-  }, JwtHelperService
+  }, JwtHelperService, authInterceptorProviders
 ],
   bootstrap: [AppComponent]
 })

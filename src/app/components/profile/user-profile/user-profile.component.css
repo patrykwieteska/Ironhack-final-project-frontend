@@ -50,8 +50,14 @@ li {
     font-weight: 500;
 }
 
+.list-edit {
+    font-size:18px;
+    font-weight: 500;
+}
+
 h1 {
     font-weight: 600;
+    font-size: x-large;
 }
 
 h2 {
@@ -72,3 +78,51 @@ h2 {
     height: 350px;
 
 }
+
+#edit-btn {
+    cursor:pointer;
+    float:right;
+}
+
+#edit-btn:hover {
+    color:grey;
+}
+
+
+.info {
+    resize: none;
+    height: 90px;
+  }
+
+  .edit-input {
+    width: 350px;
+
+}
+
+.error-msg {
+    color: red;
+    font-size: 12px;
+  }
+
+  .edit-form-element {
+    height: 40px;
+    width:200px;
+    background-color: white;
+  }
+
+  .edit-form-username {
+    font-weight: 600;
+    font-size: x-large;
+  }
+
+  .edit-form-info {
+    height: 113px;
+    width:200px;
+    background-color: white;
+  }
+
+  .list-element-info {
+    font-size:20px;
+    width:350px;
+    text-align: justify;
+  }

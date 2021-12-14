@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { TokenService } from './token.service';
 import { RegisterForm } from './../../model/auth/RegisterForm';
 import { Injectable, OnInit } from '@angular/core';
@@ -15,7 +16,7 @@ export class AuthService implements OnInit {
 
 
 
-  constructor(private http: HttpClient, public jwtHelper: JwtHelperService, private tokenService: TokenService) { }
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService, private tokenService: TokenService, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -65,6 +66,12 @@ export class AuthService implements OnInit {
 
     return false;
     
+  }
+
+  public logout():void {
+    this.router.navigate(['/']);
+    this.tokenService.logout();
+    window.location.reload();
   }
 }
 
