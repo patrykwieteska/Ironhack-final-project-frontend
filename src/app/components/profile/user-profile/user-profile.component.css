@@ -48,6 +48,7 @@ li {
 .list-header {
     font-size:20px;
     font-weight: 500;
+    color: #192E66;
 }
 
 .list-edit {
@@ -92,6 +93,7 @@ h2 {
 .info {
     resize: none;
     height: 90px;
+    color:#192E66
   }
 
   .edit-input {
