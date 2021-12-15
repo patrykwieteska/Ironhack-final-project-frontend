@@ -1,0 +1,85 @@
+.match-part {
+    float:left;
+    text-align: center;
+}
+
+.match-main {
+    width: 980px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+.match-team {
+    width:250px;
+    margin-top:10px;
+}
+
+.match-result {
+    width: 100px;
+    
+}
+
+.match-score {
+    padding:5px 0;
+    width: 30px;
+    height: 30px;
+    float:left;
+    background-color: white;
+    margin:5px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    border-radius: 30%;
+}
+
+.match-separator {
+    text-align: center;
+    float:left;
+    margin-top:10px;
+    width:20px;
+}
+
+.match-data {
+    width: 190px;
+    margin-top:10px;
+}
+
+.draw {
+    background-color: rgb(245, 241, 204);
+}
+
+.won {
+    background-color: rgb(204, 245, 206);
+}
+
+.lost {
+    background-color: rgb(238, 196, 192);
+}
+
+.draw-team {
+    color: rgb(68, 58, 32);
+}
+
+.won-team {
+    color: rgb(15, 36, 15);
+}
+
+.lost-team {
+    color: rgb(rgb(43, 13, 13), green, blue);
+}
+
+.live-match {
+    font-weight: 800;
+    animation: blinker 2s linear infinite;
+    color: rgb(160, 83, 0)
+}
+.live-match-color {
+    font-weight: 600;
+    color: rgb(160, 83, 0)
+}
+
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
+
+

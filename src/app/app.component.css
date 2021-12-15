@@ -1,9 +1,11 @@
 .container  {
     min-width: 1200px;
-    height: 100%;
     margin: 0 auto;
     background-color: rgba(228, 228, 228, 0.95);
     padding: 0px;
+    padding-top:20px;
+    min-height:700px;
+
 }
 
 .footer {

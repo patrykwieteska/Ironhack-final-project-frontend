@@ -29,6 +29,8 @@ import { StandingsComponent } from './components/standings/standings/standings.c
 import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { LoaderComponent } from './components/common/loader/loader.component';
 import { DeleteProfileComponent } from './components/profile/delete-profile/delete-profile.component';
+import { MatchItemComponent } from './components/matches/match-item/match-item.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { DeleteProfileComponent } from './components/profile/delete-profile/dele
     UserProfileComponent,
     StandingsComponent,
     LoaderComponent,
-    DeleteProfileComponent
+    DeleteProfileComponent,
+    MatchItemComponent
     
   ],
   imports: [
@@ -63,6 +66,7 @@ import { DeleteProfileComponent } from './components/profile/delete-profile/dele
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatDialogModule,
+    MatIconModule,
     JwtModule
     ,FormsModule
   ],

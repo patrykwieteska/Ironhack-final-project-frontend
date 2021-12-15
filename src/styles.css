@@ -17,13 +17,12 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Lato', sans-serif;
-    font-family: 'Ubuntu', sans-serif;
   }
 
   html, body {
     font-family: 'Lato', sans-serif;
     height: 100%;
-    margin: 0;
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
   }
 
   .material-icons {
@@ -53,11 +52,6 @@ body {
     font-feature-settings: 'liga';
   }
   
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
   background-color: #192E66;

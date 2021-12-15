@@ -1,0 +1,22 @@
+<div class="match-main" [ngClass]="{'live-match-color':match.status==='LIVE'}">
+    <div class="match-part match-data" >
+        <span>{{match.date}}</span>
+    </div>
+    <div class="match-part match-team"  [ngClass]="{'won-team': match.homeGoals > match.awayGoals  && match.status!=='LIVE', 'lost-team':match.homeGoals < match.awayGoals  && match.status!=='LIVE', 'draw-team': match.homeGoals === match.awayGoals && match.awayGoals!==null  && match.status!=='LIVE'}">
+        {{match.homeTeam.name}}
+    </div>
+    <div class="match-part match-result">
+        <div class="match-score" [ngClass]="{'won': match.homeGoals > match.awayGoals  && match.status!=='LIVE', 'lost':match.homeGoals < match.awayGoals  && match.status!=='LIVE', 'draw': match.homeGoals === match.awayGoals && match.awayGoals!==null  && match.status!=='LIVE'}">{{match.homeGoals}}</div>
+        <div class="match-separator">:</div>
+        <div class="match-score" [ngClass]="{'won': match.awayGoals > match.homeGoals && match.status!=='LIVE', 'lost':match.awayGoals < match.homeGoals && match.status!=='LIVE', 'draw': match.awayGoals === match.homeGoals && match.awayGoals!==null  && match.status!=='LIVE'}">{{match.awayGoals}}</div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="match-part match-team" [ngClass]="{'won-team': match.awayGoals > match.homeGoals  && match.status!=='LIVE', 'lost-team':match.awayGoals < match.homeGoals  && match.status!=='LIVE', 'draw-team': match.awayGoals === match.homeGoals && match.awayGoals!==null  && match.status!=='LIVE'}">
+        {{match.awayTeam.name}}
+    </div>
+    <div class="match-part match-data" [ngClass]="{'live-match': match.status==='LIVE'}">
+        {{match.status}} <span *ngIf="match.status==='LIVE'" style="font-size: 20px;" class="material-icons">live_tv</span>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+
