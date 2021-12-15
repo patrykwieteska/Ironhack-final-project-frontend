@@ -50,6 +50,7 @@ export class MatchListComponent implements OnInit {
 
   goToTheRound(roundId: number) {
     this.router.navigate(['/matches/round/'+roundId]);
+    this.getMatchesByRound(roundId);
     this.roundId=roundId;
   }
 

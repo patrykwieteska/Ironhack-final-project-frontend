@@ -1,1 +1,31 @@
-<p>prediction-list works!</p>
+<div class="main shadow-effect">
+    <div *ngIf="!isPageLoaded" class="content">
+        <app-loader></app-loader>
+    </div>
+    <div *ngIf="isPageLoaded" class="content">
+        <div class="predict-header-1">
+            Matchday {{roundId}} of {{lastRound}}
+        </div>
+        <div class="predict-header-2">
+            Predictions
+        </div>
+        <div>
+            <app-prediction-item *ngFor="let prediction of predictionsList" [prediction]="prediction"></app-prediction-item>
+        </div>
+        <div class="predict-header-2" style="margin-top:20px; font-weight: 600;">
+            <div>
+            <mat-label>Select matchday</mat-label>    
+            </div>
+            <div>
+                <mat-form-field style="width: 35px; margin-top: -20px;">
+                    <mat-select [(value)]="roundId">
+                        <mat-option (click)="goToTheRound(round)" *ngFor="let round of rounds" [value]="round">
+                            {{round}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+</div>

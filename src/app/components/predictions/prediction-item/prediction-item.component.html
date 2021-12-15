@@ -1,0 +1,36 @@
+<form [formGroup]="predictionForm" (ngSubmit)="predictMatch()">
+    <div class="match-main" [ngClass]="{'live-match-color':prediction.fixture.status==='LIVE'}">
+        <div class="match-part match-data">
+            <span>{{prediction.fixture.date}}</span>
+        </div>
+        <div class="match-part match-team"
+            [ngClass]="{'won-team': prediction.fixture.homeGoals > prediction.fixture.awayGoals  && prediction.fixture.status!=='LIVE', 'lost-team':prediction.fixture.homeGoals < prediction.fixture.awayGoals  && prediction.fixture.status!=='LIVE', 'draw-team': prediction.fixture.homeGoals === prediction.fixture.awayGoals && prediction.fixture.awayGoals!==null  && prediction.fixture.status!=='LIVE'}">
+            {{prediction.fixture.homeTeam.name}}
+        </div>
+        <div class="match-part match-result">
+            <div class="match-score"
+                [ngClass]="{'won': prediction.fixture.homeGoals > prediction.fixture.awayGoals  && prediction.fixture.status!=='LIVE', 'lost':prediction.fixture.homeGoals < prediction.fixture.awayGoals  && prediction.fixture.status!=='LIVE', 'draw': prediction.fixture.homeGoals === prediction.fixture.awayGoals && prediction.fixture.awayGoals!==null  && prediction.fixture.status!=='LIVE'}">
+                {{prediction.fixture.homeGoals}}</div>
+            <input class="prediction-score" formControlName="homeGoals" type="text" maxlength="2">
+            <div class="match-separator">:</div>
+            <input class="prediction-score" formControlName="awayGoals" type="text" maxlength="2">
+            <div class="match-score"
+                [ngClass]="{'won': prediction.fixture.awayGoals > prediction.fixture.homeGoals && prediction.fixture.status!=='LIVE', 'lost':prediction.fixture.awayGoals < prediction.fixture.homeGoals && prediction.fixture.status!=='LIVE', 'draw': prediction.fixture.awayGoals === prediction.fixture.homeGoals && prediction.fixture.awayGoals!==null  && prediction.fixture.status!=='LIVE'}">
+                {{prediction.fixture.awayGoals}}</div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="match-part match-team"
+            [ngClass]="{'won-team': prediction.fixture.awayGoals > prediction.fixture.homeGoals  && prediction.fixture.status!=='LIVE', 'lost-team':prediction.fixture.awayGoals < prediction.fixture.homeGoals  && prediction.fixture.status!=='LIVE', 'draw-team': prediction.fixture.awayGoals === prediction.fixture.homeGoals && prediction.fixture.awayGoals!==null  && prediction.fixture.status!=='LIVE'}">
+            {{prediction.fixture.awayTeam.name}}
+        </div>
+        <div class="match-part match-data" [ngClass]="{'live-match': prediction.fixture.status==='LIVE'}">
+            {{prediction.fixture.status}} <span *ngIf="prediction.fixture.status==='LIVE'" style="font-size: 20px;"
+                class="material-icons">live_tv</span>
+        </div>
+        <div class="prediction-result">
+
+            <button mat-stroked-button color="primary" id="predict-match"  type="submit" [disabled]="predictionForm.invalid">PREDICT MATCH</button>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</form>

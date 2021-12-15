@@ -31,6 +31,7 @@ import { LoaderComponent } from './components/common/loader/loader.component';
 import { DeleteProfileComponent } from './components/profile/delete-profile/delete-profile.component';
 import { MatchItemComponent } from './components/matches/match-item/match-item.component';
 import {MatIconModule} from '@angular/material/icon';
+import { PredictionItemComponent } from './components/predictions/prediction-item/prediction-item.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {MatIconModule} from '@angular/material/icon';
     StandingsComponent,
     LoaderComponent,
     DeleteProfileComponent,
-    MatchItemComponent
+    MatchItemComponent,
+    PredictionItemComponent
     
   ],
   imports: [
