@@ -1,28 +1,24 @@
-<p>match-list works!</p>
-
-
 <div class="main shadow-effect">
     <div *ngIf="!isPageLoaded" class="content">
         <app-loader></app-loader>
     </div>
-
     <div *ngIf="isPageLoaded" class="content">
         <div class="matches-header-1">
-            Matchday 1 of 34
+            Matchday {{roundId}} of {{lastRound}}
         </div>
         <div class="matches-header-2">
             Results
         </div>
         <div>
-            <app-match-item></app-match-item>
+            <app-match-item *ngFor="let match of matchList.fixtures" [match]="match"></app-match-item>
         </div>
-        <div class="matches-header-2">
+        <div class="matches-header-2" style="margin-top:20px; font-weight: 600;">
             <div>
-                Select matchday
+            <mat-label>Select matchday</mat-label>    
             </div>
             <div>
-                <mat-form-field style="width: 50px;">
-                    <mat-select [(value)]="selected">
+                <mat-form-field style="width: 35px; margin-top: -20px;">
+                    <mat-select [(value)]="roundId">
                         <mat-option (click)="goToTheRound(round)" *ngFor="let round of rounds" [value]="round">
                             {{round}}
                         </mat-option>
@@ -33,4 +29,3 @@
     </div>
 
 </div>
-<app-match-item></app-match-item>

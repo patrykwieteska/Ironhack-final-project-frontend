@@ -30,7 +30,7 @@ import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { LoaderComponent } from './components/common/loader/loader.component';
 import { DeleteProfileComponent } from './components/profile/delete-profile/delete-profile.component';
 import { MatchItemComponent } from './components/matches/match-item/match-item.component';
-
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -66,6 +66,7 @@ import { MatchItemComponent } from './components/matches/match-item/match-item.c
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatDialogModule,
+    MatIconModule,
     JwtModule
     ,FormsModule
   ],

@@ -2,6 +2,7 @@ import { MatchService } from './../../../services/match/match.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-match-list',
@@ -10,31 +11,37 @@ import { FormControl } from '@angular/forms';
 })
 export class MatchListComponent implements OnInit {
 
+  matchList: any;
+  readonly lastRound= 38;
   rounds: number[];
   roundId!: number;
-  selected=1;
 
   isPageLoaded=false;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private matchService: MatchService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private matchService: MatchService, private location: Location) {
+    this.matchList=null;
     this.rounds=[];
     this.loadMatchDay();
    }
 
-  ngOnInit(): void {let roundId = this.activatedRoute.snapshot.params['roundId'];
-    if(roundId===undefined){
-      roundId=1;
+  ngOnInit(): void {
+    
+    this.roundId = this.activatedRoute.snapshot.params['roundId'];
 
-    }
-    this.roundId=roundId;
-    this.getMatchesByRound(roundId);
+    if(this.roundId===undefined || this.roundId<1 || this.roundId===null){
+      this.roundId=1;
+    } else if(this.roundId>this.lastRound) {
+      this.roundId=this.lastRound;
+    } 
+
+   this.location.go('matches/round/'+this.roundId);
+    this.getMatchesByRound(this.roundId);
+
   }
-
-  myControl = new FormControl();
   
   loadMatchDay(): void {
 
-      for (let index = 1; index <= 34; index++) {
+      for (let index = 1; index <= this.lastRound; index++) {
         this.rounds.push(index);
         
       }
@@ -43,7 +50,7 @@ export class MatchListComponent implements OnInit {
 
   goToTheRound(roundId: number) {
     this.router.navigate(['/matches/round/'+roundId]);
-    this.getMatchesByRound(roundId);
+    this.roundId=roundId;
   }
 
   getMatchesByRound(roundId:number) {
@@ -51,8 +58,9 @@ export class MatchListComponent implements OnInit {
 
     this.matchService.getMatchesByRound(roundId).subscribe(
       result => {
-        console.log(result)
         this.isPageLoaded=true;
+        this.matchList=result;
+        console.log(this.matchList)
       }
     )
   }
