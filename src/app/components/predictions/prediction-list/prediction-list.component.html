@@ -1,4 +1,7 @@
 <div class="main shadow-effect">
+    <div class="header-section">PREDICTIONS<hr></div>
+
+    
     <div *ngIf="!isPageLoaded" class="content">
         <app-loader></app-loader>
     </div>
@@ -8,11 +11,14 @@
         </div>
         <div class="predict-header-2">
             Predictions
+            <span style="float: right;">RESULTS</span>
+            
         </div>
+        <div style="clear: both;"></div>
         <div>
             <app-prediction-item *ngFor="let prediction of predictionsList" [prediction]="prediction"></app-prediction-item>
         </div>
-        <div class="predict-header-2" style="margin-top:20px; font-weight: 600;">
+        <div class="predict-header-3" style="margin-top:20px; font-weight: 600;">
             <div>
             <mat-label>Select matchday</mat-label>    
             </div>

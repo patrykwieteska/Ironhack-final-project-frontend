@@ -4,13 +4,14 @@
 }
 
 .match-main {
-    width: 980px;
+    width: 1180px;
+    margin-left:-100px;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
 .match-team {
     width:210px;
-    margin-top:10px;
+    margin-top:12px;
 }
 
 .match-result {
@@ -42,6 +43,18 @@
    
 }
 
+.prediction-score-label {
+    padding:7px 0;
+    width: 32px;
+    height: 32px;
+    float:left;
+    background-color: gray;
+    margin: 4px;
+    border-radius: 10%;
+    text-align: center;
+    border:none;
+}
+
 .match-separator {
     text-align: center;
     float:left;
@@ -50,8 +63,8 @@
 }
 
 .match-data {
-    width: 190px;
-    margin-top:10px;
+    width: 170px;
+    margin-top:12px; 
 }
 
 .draw {
@@ -72,6 +85,7 @@
 
 .won-team {
     color: rgb(15, 36, 15);
+    font-weight: bold;
 }
 
 .lost-team {
@@ -94,5 +108,70 @@
     }
   }
 
+.prediction-result {
+    float:left;
+    margin-top:5px;
+    width: 220px;
 
+}
+
+.prediction-button {
+    float:left;
+    width: 145px;
+}
+
+.prediction-points {
+    float:right;
+    font-size: 30px;
+    padding-top:8px;
+    margin-left: 30px;
+}
+
+#predict-btn {
+    text-align: center;
+    font-size: 10px;
+    width: 110px;
+    height: 33px;
+}
+
+.result-icon {
+    float:right;
+    font-size: 34px;
+    cursor: pointer;
+}
+
+.exact {
+    color: green;
+}
+
+.correct {
+    color: green;
+}
+
+.none {
+    color: gray;
+}
+
+.pending {
+    color: darkgoldenrod;
+}
+
+.incorrect {
+    color: darkred;
+}
+
+.icons {
+    width:25px;
+    float:left;
+}
+
+.confirm-prediction {
+    text-align: center;
+    color:green;
+    padding-top:8px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 110px;
+    height: 33px;
+}
 
