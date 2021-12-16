@@ -5,3 +5,8 @@
     background-color: #C4C4C4;
     border-radius: 10px 10px 10px 10px;
 }
+
+.content {
+    margin:5px;
+    padding:5px;
+}
