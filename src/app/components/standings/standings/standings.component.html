@@ -1,4 +1,71 @@
 <div class="main shadow-effect">
-    <div class="header-section">STANDINGS<hr></div>
 
+    <div *ngIf="!isPageLoaded" class="content">
+        <app-loader></app-loader>
+    </div>
+    <div *ngIf="isPageLoaded" class="content">
+        <div class="header-section">
+            <p><img [src]="leagueInfo.logo" width="30px"><b>{{leagueInfo.name}}</b> | <b>{{leagueInfo.season}} /
+                    {{leagueInfo.season +1}}</b></p>
+            <hr>
+        </div>
+        <div class="league-data">
+            <table class="table table-sm">
+                <caption>Season {{leagueInfo.season}} / {{leagueInfo.season +1}}</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" colspan="2">Team</th>
+                        <th scope="col">M</th>
+                        <th scope="col">P</th>
+                        <th scope="col">W</th>
+                        <th scope="col">D</th>
+                        <th scope="col">L</th>
+                        <th scope="col" colspan="3">GOALS</th>
+                        <th scope="col">+/-</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let standing of standings; let i =index">
+                        <td class="" >
+                            {{standing.rank}}
+                        </td>
+                        <td class="">
+                            {{standing.team.name}} <img [src]="standing.team.logo" width="20px">
+                        </td>
+                        <td class="">
+                            {{standing.rankStatus}}
+                        </td>
+                        <td class="">
+                            {{standing.played}}
+                        </td>
+                        <td class="">
+                            {{standing.points}}
+                        </td>
+                        <td class="">
+                            {{standing.win}}
+                        </td>
+                        <td class="">
+                            {{standing.draw}}
+                        </td>
+                        <td class="">
+                            {{standing.lose}}
+                        </td>
+                        <td class="">
+                            {{standing.goalsFor}}
+                        </td>
+                        <td class="">
+                            -
+                        </td>
+                        <td class="">
+                            {{standing.goalsAgainst}}
+                        </td>
+                        <td class="">
+                            {{standing.goalsDifference}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
