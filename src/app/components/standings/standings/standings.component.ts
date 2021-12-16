@@ -1,7 +1,8 @@
-import { StandingsService } from './../../../services/standings/standings.service';
+
 import { LeagueInfo } from './../../../model/app-models/standings/LeagueInfo';
 import { StandingsItem } from './../../../model/app-models/standings/StandingsData';
 import { Component, OnInit } from '@angular/core';
+import { StandingsService } from 'src/app/services/standings/standings.service';
 
 @Component({
   selector: 'app-standings',
