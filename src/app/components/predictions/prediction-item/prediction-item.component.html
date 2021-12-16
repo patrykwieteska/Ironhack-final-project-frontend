@@ -1,0 +1,87 @@
+<form>
+    <div class="match-main" [ngClass]="{'live-match-color':prediction.fixture.status==='LIVE'}"
+        [formGroup]="predictionForm" (ngSubmit)="predictMatch()">
+        <div class="match-part match-data">
+            <span>{{prediction.fixture.date | date: 'MMM d, y h:mm a'}}</span>
+        </div>
+        <div class="match-part match-team"
+            [ngClass]="{'won-team': prediction.fixture.homeGoals > prediction.fixture.awayGoals  && prediction.fixture.status!=='LIVE', 'lost-team':prediction.fixture.homeGoals < prediction.fixture.awayGoals  && prediction.fixture.status!=='LIVE', 'draw-team': prediction.fixture.homeGoals === prediction.fixture.awayGoals && prediction.fixture.awayGoals!==null  && prediction.fixture.status!=='LIVE'}">
+            {{prediction.fixture.homeTeam.name}} <img [src]="prediction.fixture.homeTeam.logo" width="20px"
+                style="float:right">
+        </div>
+        <div class="match-part match-result">
+            <div class="match-score"
+                [ngClass]="{'won': prediction.fixture.homeGoals > prediction.fixture.awayGoals  && prediction.fixture.status!=='LIVE', 'lost':prediction.fixture.homeGoals < prediction.fixture.awayGoals  && prediction.fixture.status!=='LIVE', 'draw': prediction.fixture.homeGoals === prediction.fixture.awayGoals && prediction.fixture.awayGoals!==null  && prediction.fixture.status!=='LIVE'}">
+                {{prediction.fixture.homeGoals}}</div>
+            <input *ngIf="prediction.fixture.status ==='UPCOMING'" class="prediction-score" formControlName="homeGoals" type="text" maxlength="2">
+            <label *ngIf="prediction.fixture.status !=='UPCOMING'" class="prediction-score-label">{{homeGoalsDefault}}</label>
+            <div class="match-separator">:</div>
+            <label *ngIf="prediction.fixture.status !=='UPCOMING'" class="prediction-score-label">{{homeGoalsDefault}}</label>
+            <input *ngIf="prediction.fixture.status ==='UPCOMING'" class="prediction-score" formControlName="awayGoals" type="text" maxlength="2">
+            
+            <!-- value="{{prediction.predictionInfo.prediction === null ? ''  : prediction.predictionInfo.prediction.predictedAwayGoals}}">  -->
+
+
+            <div class="match-score"
+                [ngClass]="{'won': prediction.fixture.awayGoals > prediction.fixture.homeGoals && prediction.fixture.status!=='LIVE', 'lost':prediction.fixture.awayGoals < prediction.fixture.homeGoals && prediction.fixture.status!=='LIVE', 'draw': prediction.fixture.awayGoals === prediction.fixture.homeGoals && prediction.fixture.awayGoals!==null  && prediction.fixture.status!=='LIVE'}">
+                {{prediction.fixture.awayGoals}}</div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="match-part match-team"
+            [ngClass]="{'won-team': prediction.fixture.awayGoals > prediction.fixture.homeGoals  && prediction.fixture.status!=='LIVE', 'lost-team':prediction.fixture.awayGoals < prediction.fixture.homeGoals  && prediction.fixture.status!=='LIVE', 'draw-team': prediction.fixture.awayGoals === prediction.fixture.homeGoals && prediction.fixture.awayGoals!==null  && prediction.fixture.status!=='LIVE'}">
+            <img [src]="prediction.fixture.awayTeam.logo" width="24px"
+                style="float:left">{{prediction.fixture.awayTeam.name}}
+        </div>
+        <div class="match-part match-data" [ngClass]="{'live-match': prediction.fixture.status==='LIVE'}">
+            {{prediction.fixture.status}} <span *ngIf="prediction.fixture.status==='LIVE'" style="font-size: 24px;"
+                class="material-icons">live_tv</span>
+        </div>
+        <div class="prediction-result">
+            <div class="prediction-button">
+                <div *ngIf="prediction.fixture.status ==='UPCOMING' && !isVisible">
+                    <button [disabled]="predictionForm.invalid" mat-raised-button color="primary" id="predict-btn"
+                        (click)="predictMatch()">PREDICT MATCH</button>
+                </div>
+                <div *ngIf="prediction.fixture.status ==='UPCOMING' && isVisible">
+                    <label class="confirm-prediction">SAVED!</label>
+                </div>
+                <div *ngIf="prediction.fixture.status !=='UPCOMING'"
+                    matTooltip="You can't make a prediction for this match">
+                    <label style="margin-top: 7px; margin-left:20px;font-size: smaller; ">No prediction</label>
+                </div>
+            </div>
+            <div class="icons">
+                <span class="material-icons result-icon exact" matTooltip="{{prediction.predictionInfo.result.message}}"
+                    *ngIf="prediction.predictionInfo.result.status==='EXACT'">
+                    check_circle
+                </span>
+                <span class="material-icons result-icon correct"
+                    matTooltip="{{prediction.predictionInfo.result.message}}"
+                    *ngIf="prediction.predictionInfo.result.status==='CORRECT'">
+                    check
+                </span>
+                <span class="material-icons result-icon incorrect"
+                    matTooltip="{{prediction.predictionInfo.result.message}}"
+                    *ngIf="prediction.predictionInfo.result.status==='INCORRECT'">
+                    clear
+                </span>
+                <span class="material-icons result-icon none" matTooltip="{{prediction.predictionInfo.result.message}}"
+                    *ngIf="prediction.predictionInfo.result.status==='NONE'">
+                    horizontal_rule
+                </span>
+                <span class="material-icons result-icon pending"
+                    matTooltip="{{prediction.predictionInfo.result.message}}"
+                    *ngIf="prediction.predictionInfo.result.status==='PENDING'">
+                    question_mark
+                </span>
+            </div>
+
+            <div class="prediction-points">
+                {{prediction.predictionInfo.result.points}}
+            </div>
+
+
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</form>

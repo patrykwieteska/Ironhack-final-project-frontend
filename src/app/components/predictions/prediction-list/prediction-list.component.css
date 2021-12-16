@@ -6,19 +6,32 @@
     border-radius: 10px 10px 10px 10px;
 }
 
-.matches-header-1 {
+.predict-header-1 {
     text-align: center;
     font-weight: 600;
+    margin-left: -240px;
+
 }
 
-.matches-header-2 {
+.predict-header-2 {
     text-align: center;
     font-size: 12px;
     font-weight: 500;
+    margin-left: -255px;
+    width:1290px;
+}
+
+.predict-header-3 {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: -275px;
+    width:1290px;
 }
 .content {
 
     margin-left: 100px;
     padding:10px;
     width: 1000px;
+    
 }

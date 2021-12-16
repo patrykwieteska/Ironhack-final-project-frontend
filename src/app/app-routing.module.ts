@@ -27,14 +27,18 @@ const routes: Routes = [
     path: 'matches', component:MatchListComponent
   },
   {
+    path: 'matches/round/:roundId', component:MatchListComponent
+  },
+  {
     path: 'predictions', component:PredictionListComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'profile', component:UserProfileComponent, canActivate: [AuthGuard]
+    path: 'predictions/round/:roundId', component:PredictionListComponent,canActivate: [AuthGuard]
   },
   {
-    path: 'matches/round/:roundId', component:MatchListComponent
+    path: 'profile', component:UserProfileComponent, canActivate: [AuthGuard]
   }
+
   // ,{
 
   //   path: '**',
