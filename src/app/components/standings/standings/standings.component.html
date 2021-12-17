@@ -5,62 +5,69 @@
     </div>
     <div *ngIf="isPageLoaded" class="content">
         <div class="header-section">
-            <p><img [src]="leagueInfo.logo" width="30px"><b>{{leagueInfo.name}}</b> | <b>{{leagueInfo.season}} /
-                    {{leagueInfo.season +1}}</b></p>
+            <p><img [src]="leagueInfo.logo" width="35px">{{leagueInfo.name}} | {{leagueInfo.season}} /
+                    {{leagueInfo.season +1}}</p>
             <hr>
         </div>
         <div class="league-data">
-            <table class="table table-sm">
-                <caption>Season {{leagueInfo.season}} / {{leagueInfo.season +1}}</caption>
+            <table class="">
                 <thead>
-                    <tr>
-                        <th scope="col">#</th>
+                    <tr style="height: 40px;" class="tr-header"> 
+                        <th scope="col" style="width:30px;">#</th>
                         <th scope="col" colspan="2">Team</th>
                         <th scope="col">M</th>
                         <th scope="col">P</th>
                         <th scope="col">W</th>
                         <th scope="col">D</th>
                         <th scope="col">L</th>
-                        <th scope="col" colspan="3">GOALS</th>
+                        <th scope="col"  style="width: 80px;" colspan="3">GOALS</th>
                         <th scope="col">+/-</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let standing of standings; let i =index">
-                        <td class="" >
-                            {{standing.rank}}
+                <tbody style="height: 15px;">
+                    <tr *ngFor="let standing of standings; let i =index" class="table-row">
+                        <td class="rank" [ngClass]="{'rank-1':standing.rank===1, 'rank-second':standing.rank>1 && standing.rank<5, 'rank-others':standing.rank>4 && standing.rank<18, 'rank-last':standing.rank>17}">
+                            <div>{{standing.rank}}</div>
+                        </td>
+                        <td class="team">
+                            {{standing.team.name}} <img [src]="standing.team.logo" width="15px">
                         </td>
                         <td class="">
-                            {{standing.team.name}} <img [src]="standing.team.logo" width="20px">
+                            <span *ngIf="standing.rankStatus==='up'" class="material-icons icon-table" style="color: green;">
+                                arrow_upward
+                            </span>
+                            <span *ngIf="standing.rankStatus==='down'" class="material-icons icon-table" style="color: red;">
+                                arrow_downward
+                            </span>
+                            <span matTooltip="" *ngIf="standing.rankStatus==='same'" class="material-icons icon-table" style="color: gray;">
+                                minimize
+                            </span>
                         </td>
-                        <td class="">
-                            {{standing.rankStatus}}
-                        </td>
-                        <td class="">
+                        <td class="stats">
                             {{standing.played}}
                         </td>
-                        <td class="">
+                        <td class="stats">
                             {{standing.points}}
                         </td>
-                        <td class="">
+                        <td class="stats">
                             {{standing.win}}
                         </td>
-                        <td class="">
+                        <td class="stats">
                             {{standing.draw}}
                         </td>
-                        <td class="">
+                        <td class="stats">
                             {{standing.lose}}
                         </td>
-                        <td class="">
+                        <td class="stats" >
                             {{standing.goalsFor}}
                         </td>
                         <td class="">
                             -
                         </td>
-                        <td class="">
+                        <td class="stats">
                             {{standing.goalsAgainst}}
                         </td>
-                        <td class="">
+                        <td class="stats">
                             {{standing.goalsDifference}}
                         </td>
                     </tr>

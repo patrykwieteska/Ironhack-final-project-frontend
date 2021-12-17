@@ -1,9 +1,13 @@
 <div class="main shadow-effect">
-    <div class="header-section">MATCHES<hr></div>
+    
     <div *ngIf="!isPageLoaded" class="content">
         <app-loader></app-loader>
     </div>
     <div *ngIf="isPageLoaded" class="content">
+        <div class="header-section">
+            <p>MATCHES</p>
+            <hr>
+        </div>
         <div class="matches-header-1">
             Matchday {{roundId}} of {{lastRound}}
         </div>
