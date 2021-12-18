@@ -8,7 +8,7 @@
                         <span class="material-icons">home</span>
                     </div>
                   </a>
-              <a routerLink="/matches" routerLinkActive="true" matTooltip="Matches">
+              <a [routerLink]="['/matches/round', roundData.lastRound]" routerLinkActive="true" matTooltip="Matches">
                 <div class="nav-element">
                     Matches
                 </div>
@@ -18,7 +18,7 @@
                     Standings
                 </div>
               </a>
-              <a routerLink="/predictions" *ngIf="isAuthenticated" matTooltip="Predictions">
+              <a  [routerLink]="['/predictions/round', roundData.nextRound]" *ngIf="isAuthenticated" matTooltip="Predictions">
                 <div class="nav-element">
                     Predictions
                 </div>

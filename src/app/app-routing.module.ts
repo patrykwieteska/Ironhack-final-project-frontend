@@ -12,31 +12,25 @@ import { AuthGuardService as AuthGuard } from './services/auth/auth-guard.servic
 
 const routes: Routes = [
   {
-    path: '', component:HomeComponent
+    path: '', component: HomeComponent
   },
   {
-    path: 'login', component:LoginComponent
+    path: 'login', component: LoginComponent
   },
   {
-    path: 'register', component:RegisterComponent
+    path: 'register', component: RegisterComponent
   },
   {
-    path: 'standings', component:StandingsComponent
+    path: 'standings', component: StandingsComponent
   },
   {
-    path: 'matches', component:MatchListComponent
+    path: 'matches/round/:roundId', component: MatchListComponent
   },
   {
-    path: 'matches/round/:roundId', component:MatchListComponent
+    path: 'predictions/round/:roundId', component: PredictionListComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'predictions', component:PredictionListComponent, canActivate: [AuthGuard]
-  },
-  {
-    path: 'predictions/round/:roundId', component:PredictionListComponent,canActivate: [AuthGuard]
-  },
-  {
-    path: 'profile', component:UserProfileComponent, canActivate: [AuthGuard]
+    path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]
   }
 
   // ,{

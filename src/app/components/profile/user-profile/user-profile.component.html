@@ -133,29 +133,26 @@
             <div style="float:left;">
                 <h1>Predictions history</h1>
             </div>
-            <div style="float: left;">
-                <span class="material-icons" style="float: left;">
-                    sports_soccer
-                    </span>
-            </div>
-            <div style="clear: both;"></div>
 
            
         </div>
         <div style="clear:both;"></div>
         <div class="profile-element">
             <ul>
+                <li> 
+                    <span class="list-header"><span class="material-icons"  style="color:black" width="20px">sports</span>  Total predictions: </span><span class="list-item">{{profile.predictionHistory.totalPredictions}}
+                    </span> 
                 <li>
-                    <span class="list-header">Total points:</span> {{profile.predictionHistory.totalPoints}}
+                    <span class="list-header"> <span class="material-icons" style="color:gray" width="25px">sports_soccer</span>  Total points: </span><span class="list-item">{{profile.predictionHistory.totalPoints}}</span> 
                 </li>
                 <li>
-                    <span class="list-header">Total predictions: </span> {{profile.predictionHistory.totalPredictions}}
+                    <span class="list-header"><span class="material-icons" style="color:green" width="25px">check_circle</span>  Exact scores: </span><span class="list-item">{{profile.predictionHistory.exactPredictions}}</span> 
                 </li>
                 <li>
-                    <span class="list-header">Exact scores: </span> {{profile.predictionHistory.exactPredictions}}
+                    <span class="list-header"><span class="material-icons" style="color:goldenrod" width="25px">check</span>  Correct results: </span><span class="list-item">{{profile.predictionHistory.correctPredictions}}</span> 
                 </li>
                 <li>
-                    <span class="list-header">Correct results: </span> {{profile.predictionHistory.correctPredictions}}
+                    <span class="list-header"><span class="material-icons" style="color:darkred" width="25px">clear</span>  Wrong answers (in progress): </span> <span class="list-item">{{profile.predictionHistory.totalPredictions - profile.predictionHistory.correctPredictions -profile.predictionHistory.exactPredictions }}</span>
                 </li>
             </ul>
         </div>

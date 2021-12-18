@@ -1,3 +1,4 @@
+import { RoundData } from './../../model/app-models/standings/RoundData';
 import { LeagueInfo } from './../../model/app-models/standings/LeagueInfo';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -17,4 +18,9 @@ export class StandingsService {
   getLeagueInfo():Observable<LeagueInfo> {
     return this.http.get<LeagueInfo>(baseUrl + '/standings')
   }
+
+  getLastPlayedRound():Observable<any> {
+    return this.http.get<RoundData>(baseUrl + '/standings/last-round');
+  }
+
 }

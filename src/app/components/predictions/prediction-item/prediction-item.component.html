@@ -13,11 +13,11 @@
             <div class="match-score"
                 [ngClass]="{'won': prediction.fixture.homeGoals > prediction.fixture.awayGoals  && prediction.fixture.status!=='LIVE', 'lost':prediction.fixture.homeGoals < prediction.fixture.awayGoals  && prediction.fixture.status!=='LIVE', 'draw': prediction.fixture.homeGoals === prediction.fixture.awayGoals && prediction.fixture.awayGoals!==null  && prediction.fixture.status!=='LIVE'}">
                 {{prediction.fixture.homeGoals}}</div>
-            <input *ngIf="prediction.fixture.status ==='UPCOMING'" class="prediction-score" formControlName="homeGoals" type="text" maxlength="2">
-            <label *ngIf="prediction.fixture.status !=='UPCOMING'" class="prediction-score-label">{{homeGoalsDefault}}</label>
+            <input *ngIf="prediction.fixture.status ==='UPCOMING' || prediction.fixture.status ==='POSTPONED'" class="prediction-score" formControlName="homeGoals" type="text" maxlength="2">
+            <label *ngIf="prediction.fixture.status !=='UPCOMING' && prediction.fixture.status !=='POSTPONED'" class="prediction-score-label">{{homeGoalsDefault}}</label>
             <div class="match-separator">:</div>
-            <label *ngIf="prediction.fixture.status !=='UPCOMING'" class="prediction-score-label">{{homeGoalsDefault}}</label>
-            <input *ngIf="prediction.fixture.status ==='UPCOMING'" class="prediction-score" formControlName="awayGoals" type="text" maxlength="2">
+            <label *ngIf="prediction.fixture.status !=='UPCOMING' && prediction.fixture.status !=='POSTPONED'" class="prediction-score-label">{{homeGoalsDefault}}</label>
+            <input *ngIf="prediction.fixture.status ==='UPCOMING' || prediction.fixture.status ==='POSTPONED'" class="prediction-score" formControlName="awayGoals" type="text" maxlength="2">
             
             <!-- value="{{prediction.predictionInfo.prediction === null ? ''  : prediction.predictionInfo.prediction.predictedAwayGoals}}">  -->
 
@@ -38,16 +38,15 @@
         </div>
         <div class="prediction-result">
             <div class="prediction-button">
-                <div *ngIf="prediction.fixture.status ==='UPCOMING' && !isVisible">
+                <div *ngIf="(prediction.fixture.status ==='UPCOMING' || prediction.fixture.status ==='POSTPONED') && !isVisible">
                     <button [disabled]="predictionForm.invalid" mat-raised-button color="primary" id="predict-btn"
                         (click)="predictMatch()">PREDICT MATCH</button>
                 </div>
-                <div *ngIf="prediction.fixture.status ==='UPCOMING' && isVisible">
+                <div *ngIf="(prediction.fixture.status ==='UPCOMING' || prediction.fixture.status ==='POSTPONED') && isVisible">
                     <label class="confirm-prediction">SAVED!</label>
                 </div>
-                <div *ngIf="prediction.fixture.status !=='UPCOMING'"
-                    matTooltip="You can't make a prediction for this match">
-                    <label style="margin-top: 7px; margin-left:20px;font-size: smaller; ">No prediction</label>
+                <div *ngIf="prediction.fixture.status !=='UPCOMING' && prediction.fixture.status !=='POSTPONED' ">
+                    <label style="margin-top: 7px; margin-left:20px;font-size: smaller; ">-</label>
                 </div>
             </div>
             <div class="icons">

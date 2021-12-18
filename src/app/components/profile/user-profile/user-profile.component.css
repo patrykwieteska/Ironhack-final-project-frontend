@@ -52,6 +52,11 @@ li {
     color: #192E66;
 }
 
+.list-item {
+    font-size:20px;
+    font-weight: 600;
+}
+
 .list-edit {
     font-size:18px;
     font-weight: 500;
