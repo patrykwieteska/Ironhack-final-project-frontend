@@ -2,7 +2,10 @@
 
 <div style="text-align:center"><img width="300px" src="https://github.com/patrykwieteska/Ironhack-final-project-frontend/blob/main/src/assets/images/logo/logo_no_bg_black.png" /></div>
 <!-- ![alt text](https://github.com/patrykwieteska/Ironhack-final-project-frontend/blob/main/src/assets/images/logo/logo_no_bg_black.png) -->
-  
+
+### Backend part: https://github.com/patrykwieteska/Ironhack-final-project-backend
+### Remote config-server:https://github.com/patrykwieteska/Ironhack-final-project-config-server
+### Remote config properties: https://github.com/patrykwieteska/Ironhack-final-project-cloud-config
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
