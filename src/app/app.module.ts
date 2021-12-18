@@ -32,6 +32,7 @@ import { DeleteProfileComponent } from './components/profile/delete-profile/dele
 import { MatchItemComponent } from './components/matches/match-item/match-item.component';
 import {MatIconModule} from '@angular/material/icon';
 import { PredictionItemComponent } from './components/predictions/prediction-item/prediction-item.component';
+import { PageNotFoundComponent } from './components/common/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { PredictionItemComponent } from './components/predictions/prediction-ite
     LoaderComponent,
     DeleteProfileComponent,
     MatchItemComponent,
-    PredictionItemComponent
+    PredictionItemComponent,
+    PageNotFoundComponent
     
   ],
   imports: [

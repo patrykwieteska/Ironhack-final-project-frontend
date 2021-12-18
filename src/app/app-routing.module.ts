@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService as AuthGuard } from './services/auth/auth-guard.service';
+import { PageNotFoundComponent } from './components/common/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -32,12 +33,10 @@ const routes: Routes = [
   {
     path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]
   }
-
-  // ,{
-
-  //   path: '**',
-  //   component: PageNotFoundComponent,
-  //  }
+  ,{
+    path: '**',
+    component: PageNotFoundComponent,
+   }
 
 
 ];
